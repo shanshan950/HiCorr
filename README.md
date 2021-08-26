@@ -10,7 +10,7 @@ For any question about HiCorr, please contact xxl244@case.edu
 ### Download code and reference files
 ```
 git clone https://github.com/shanshan950/HiCorr.git
-cd cd HiCorr/
+cd HiCorr/
 wget http://hiview.case.edu/ssz20/tmp.HiCorr.ref/HiCorr.tar.gz # download reference files
 tar -xvf HiCorr.tar.gz 
 chmod 755 bin/*
