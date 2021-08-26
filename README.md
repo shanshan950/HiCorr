@@ -1,4 +1,4 @@
-# HiCorr
+# *HiCorr*
 HiCorr is a pipeline designed to do bias-correction and visualization of Hi-C/eHi-C data. HiCorr focuses on the mapping of chromatin interactions at high-resolution, especially the sub-TAD enhancer-promoter interactions, which requires more rigorous bias-correction, especially the correction of distance biases. It needs to be run in an unix/linux environment. Currently it includes reference files of genome build hg19 and mm10.
 
 If you use HiCorr, please site:<br/>
@@ -7,25 +7,30 @@ _Lu,L. et al._ Robust Hi-C Maps of Enhancer-Promoter Interactions Reveal the Fun
 For any question about HiCorr, please contact xxl244@case.edu
 
 ## How to setup
-
-The reference files can be download by
-`wget http://hiview.case.edu/ssz20/tmp.HiCorr.ref/HiCorr.tar.gz`
-<b>To use HiCorr on HindIII or eHiC data:</b> 
-1. Download everything into your local machine.
-2. Since several reference files are too large to fit github, please download them here: http://hiview.case.edu/test/HiCorr_ref/, and put reference files into corresponding directories.
-3. Go back to the main directory, edit "HiCorr":
-   - Line 3: Replace "PATH_TO_REF" with the path to your directory "ref"
-   - Line 4: Replace "PATH_TO_BIN" with the path to your directory "bin" <br/>
-<br/>
-<b>To use HiCorr on DPNII/Mbol data:</b> <br/>
-See the [DPNII/Mbol - Preparation files](https://github.com/JinLabBioinfo/HiCorr/blob/master/README.md#preparation-files) section for detail.
+### download code and reference files
+```
+git clone https://github.com/shanshan950/HiCorr.git
+cd cd HiCorr/
+wget http://hiview.case.edu/ssz20/tmp.HiCorr.ref/HiCorr.tar.gz # download reference files
+tar -xvf HiCorr.tar.gz 
+chmod 755 bin/*
+```
+### Change variables ref and bin in HiCorr file
+> In HiCorr file, you can manually replace the "PATH_TO_REF" with the path to your directory "ref", Replace "PATH_TO_BIN" with the path to your directory "bin" 
+> Or use the command below: 
+```
+new_bin=echo `pwd`"/bin" 
+new_ref=echo `pwd`"/ref" 
+sed -i "s|PATH_TO_REF|${new_ref}|" HiCorr
+sed -i "s|PATH_TO_BIN|${new_bin}|" HiCorr
+```
 
 ## Run HiCorr
 Usage:<br/>
    ```./HiCorr <mode> <parameters>```
 <br/>
 <br/>
-**_HiCorr has 5 different modes: eHiC-QC, Bam-process, HindIII, DPNII, eHiC and Heatmap_**
+**_HiCorr has 5 different modes: eHiC-QC, Bam-process-HindIII, Bam-process-DPNII, HindIII, DPNII, eHiC and Heatmap_**
 
 ### eHiC-QC
 eHiC-QC mode takes a pair of fastq.gz files as input, aligns and processes eHiC reads, outputs fragment-end-pair files for further analysis. This mode also outputs summarize numbers which works as quality check fo eHiC experiments.
@@ -34,8 +39,6 @@ You need to have Bowtie(http://bowtie-bio.sourceforge.net/index.shtml) and samto
 You also need Bowtie index and fa.fai file.
 To run the eHiC-QC mode, you need 4 arguments: <br/>
    ```./HiCorr eHiC-QC <bowtie_index> <fa.fai> <name>```
-<br/>You need several reference files, please download them from http://hiview.case.edu/test/HiCorr_ref/eHiC-QC/, uncompress them and put them in your ref folder.
-
 
 ### Bam-process
 Bam-process mode takes a sorted bam file as input, processes and generates two files as outputs. The two output files are the required input files when using the HiCorr HindIII mode. The two output files are intra-chromosome looping fragment-pair file and inter-chromosome looping fragment-pair file. <br/>
