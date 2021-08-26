@@ -11,16 +11,17 @@ For any question about HiCorr, please contact xxl244@case.edu
 ```
 git clone https://github.com/shanshan950/HiCorr.git
 cd HiCorr/
-wget http://hiview.case.edu/ssz20/tmp.HiCorr.ref/HiCorr.tar.gz # download reference files
+chmod 755 HiCorr
+chmod -R 755 bin/*
+wget http://hiview.case.edu/ssz20/tmp.HiCorr.ref/HiCorr.tar.gz # download reference files # It needs ~103G space after decompress
 tar -xvf HiCorr.tar.gz 
-chmod 755 bin/*
 ```
 ### Change variables ref and bin in HiCorr file
 > In HiCorr file, you can manually replace the "PATH_TO_REF" with the path to your directory "ref", Replace "PATH_TO_BIN" with the path to your directory "bin" 
 > Or use the command below: 
 ```
-new_bin=echo `pwd`"/bin" 
-new_ref=echo `pwd`"/ref" 
+new_bin=`pwd`"/bin" 
+new_ref=`pwd`"/ref" 
 sed -i "s|PATH_TO_REF|${new_ref}|" HiCorr
 sed -i "s|PATH_TO_BIN|${new_bin}|" HiCorr
 ```
