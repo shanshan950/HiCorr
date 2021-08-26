@@ -7,7 +7,7 @@ _Lu,L. et al._ Robust Hi-C Maps of Enhancer-Promoter Interactions Reveal the Fun
 For any question about HiCorr, please contact xxl244@case.edu
 
 ## How to setup
-### download code and reference files
+### Download code and reference files
 ```
 git clone https://github.com/shanshan950/HiCorr.git
 cd cd HiCorr/
