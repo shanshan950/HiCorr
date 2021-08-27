@@ -94,7 +94,7 @@ To run the eHiC mode:<br/>
 Heatmap mode generates Hi-C heatmaps of a certain region you choosed(up to 2,000,000bp). This mode need to be run after either HindIII mode or eHiC mode, since it takes an anchor-to-anchor looping-pair file as input.
 <br/>
 To run the Heatmap mode: <br/>
-   ```./HiCorr Heatmap <chr> <start> <end> <anchor_loop_file> [option]```
+   ```./HiCorr Heatmap <chr> <start> <end> <anchor_loop_file> <reference_genome> <enzyme> [option]```
 #### Options
 *  _Default_ <br/>
    By defult, heatmap mode will generates 3 heatmaps for the region you entered: a raw heatmap of observed reads, a heatmap of expected reads, and a heatmap of bias-corrected reads(as a ratio of observeds reads over expected reads). If you want all 3 of these heatmaps, leave the option as blank.
