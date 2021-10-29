@@ -7,14 +7,21 @@ _Lu,L. et al._ Robust Hi-C Maps of Enhancer-Promoter Interactions Reveal the Fun
 For any question about HiCorr, please contact xxl244@case.edu
 
 ## How to setup
-### Download code and reference files
+### Download the code
 ```
 git clone https://github.com/shanshan950/HiCorr.git
 cd HiCorr/
 chmod 755 HiCorr
 chmod -R 755 bin/*
+
+```
+### Download code and reference files
+After you run the following commands, you will see "ref/" in the current directory. There are 4 subdirectories under "ref/": "DPNII/  eHiC/  eHiC-QC/  HindIII".
+```
 wget http://hiview.case.edu/ssz20/tmp.HiCorr.ref/HiCorr.tar.gz # download reference files # It needs ~103G space after decompress
 tar -xvf HiCorr.tar.gz 
+ls
+ls ref/
 ```
 ### Change variables ref and bin in HiCorr file
 > In HiCorr file, you can manually replace the "PATH_TO_REF" with the path to your directory "ref", Replace "PATH_TO_BIN" with the path to your directory "bin" 
